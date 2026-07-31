@@ -1,13 +1,15 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-app = FastAPI()
+app=FastAPI()
 
-class User(BaseModel):
+class Item(BaseModel):
     name: str
     age: int
-    email: str
+    discpription: str=None
 
-@app.post("/users/")
-def create_user(user: User):
-    return {"message": "User created successfully", "user": user}
+@app.post("/items/")
+def Create_item(item: Item):
+    return{
+        "message":"Successfully created", "item":item 
+    }
