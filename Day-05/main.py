@@ -1,15 +1,16 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-app=FastAPI()
+app = FastAPI()
 
-class Item(BaseModel):
+class Iteam(BaseModel):
     name: str
+    description: str=None
     age: int
-    discpription: str=None
 
-@app.post("/items/")
-def Create_item(item: Item):
-    return{
-        "message":"Successfully created", "item":item 
+@app.get("/iteams")
+def get_iteams(iteam: Iteam):
+    return {
+        "message": "Iteam retrieved successfully",
+        "iteam": iteam
     }
